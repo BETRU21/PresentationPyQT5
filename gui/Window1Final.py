@@ -1,4 +1,6 @@
 import os
+import sys
+import ctypes
 from PyQt5 import uic
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
@@ -7,6 +9,11 @@ from PyQt5.QtGui import QIcon
 #from .tools.threadWorker import Worker
 
 application_path = os.path.abspath("")
+if sys.platform == "win32":
+    myappid = u"mycompany.myproduct.subproduct.version" # arbitrary string
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+else:
+    pass
 
 UiPath = os.path.dirname(os.path.realpath(__file__)) + '{0}Window1.ui'.format(os.sep)
 Ui_MainWindow, QtBaseClass = uic.loadUiType(UiPath)

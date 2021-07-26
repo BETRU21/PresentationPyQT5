@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from gui.Window2FinalCopie import Window
+from gui.Window2Final import Window
 import sys
-
 
 
 if __name__ == "__main__":

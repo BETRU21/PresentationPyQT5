@@ -6,10 +6,25 @@ from PyQt5.QtGui import QIcon
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+import ctypes
+import sys
 
 #from .tools.threadWorker import Worker
 
 application_path = os.path.abspath("")
+
+if sys.platform == "win32":
+    myappid = u"mycompany.myproduct.subproduct.version" # arbitrary string
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+else:
+    pass
+
+
+appID = "opt-id"  # arbitrary string
+    if os.name == 'nt':
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(appID)
+    elif os.name == 'posix':
+        pass
 
 UiPath = os.path.dirname(os.path.realpath(__file__)) + '{0}Window1.ui'.format(os.sep)
 Ui_MainWindow, QtBaseClass = uic.loadUiType(UiPath)
