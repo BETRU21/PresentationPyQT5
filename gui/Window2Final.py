@@ -8,10 +8,16 @@ import numpy as np
 import random
 from tools.ThreadWorker import Worker
 from PyQt5.QtCore import pyqtSignal, Qt, QThreadPool, QThread, QTimer
-
-#from .tools.threadWorker import Worker
+import ctypes
+import sys
 
 application_path = os.path.abspath("")
+
+if sys.platform == "win32":
+    myappid = u"mycompany.myproduct.subproduct.version" # arbitrary string
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+else:
+    pass
 
 UiPath = os.path.dirname(os.path.realpath(__file__)) + '{0}Window1.ui'.format(os.sep)
 Ui_MainWindow, QtBaseClass = uic.loadUiType(UiPath)
